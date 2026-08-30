@@ -1,0 +1,6 @@
+population,u_statistic,p_value,significant
+b_cell,55238.5,0.550051,No
+cd8_t_cell,52204.0,0.514221,No
+cd4_t_cell,54412.5,0.796926,No
+nk_cell,53429.0,0.882726,No
+monocyte,50759.5,0.212218,No

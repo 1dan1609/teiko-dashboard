@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Reserves the vertical scrollbar's width always, so content doesn't
+     shift sideways when a filter change makes the page cross the
+     scrollable-height threshold. */
+  scrollbar-gutter: stable;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+.teiko-header {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 2px rgba(30, 41, 59, 0.06), 0 1px 3px rgba(30, 41, 59, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  margin-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  min-height: 236px;
+}
+
+.teiko-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0;
+  line-height: 1;
+}
+
+.teiko-header .subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.375rem;
+}
+
+/* Decorative EKG/vital-line motif, reinforcing the clinical-monitoring
+   association without competing with the data below it. */
+.teiko-header-pulse {
+  width: 100%;
+  height: 40px;
+  opacity: 0.5;
+}
+
+.teiko-header-pulse path {
+  stroke-width: 2.5px;
+}
+
+.tabs {
+  display: flex;
+  gap: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-lg);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .tab-btn {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8125rem;
+  }
+}
+
+.tab-btn:hover {
+  color: var(--color-text);
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  background-color: rgba(15, 118, 110, 0.08);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.section-header {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 1.5rem 0 0.75rem 0;
+  letter-spacing: -0.015em;
+}
+
+.caption {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  margin: 0.25rem 0 1rem 0;
+}
+
+.filters-row {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 200px;
+  flex: 1;
+}
+
+/* Raw Data's filter boxes are chips, not a fluid split: each keeps a
+   stable, content-appropriate width regardless of how many sibling
+   filters are added or removed, and simply wraps onto a new row once
+   the row is full. */
+#rawdata-always-filters .filter-group,
+#rawdata-extra-filters .filter-group {
+  flex: 0 0 auto;
+}
+
+.filter-group--checkbox {
+  max-width: 320px;
+}
+
+.filter-group--text {
+  width: 240px;
+}
+
+.filter-group--range {
+  width: 280px;
+}
+
+.filter-group--search {
+  flex: 0 0 auto;
+  max-width: 420px;
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}

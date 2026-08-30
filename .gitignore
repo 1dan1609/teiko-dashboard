@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Runtime artifacts from the local dev server
+*.log
+*.pid
+*.db-journal
+*.db-wal
+
+# Editor state
+.vscode/
+.idea/
+.DS_Store

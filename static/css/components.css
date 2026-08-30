@@ -1,0 +1,467 @@
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.metric-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(30, 41, 59, 0.06), 0 1px 3px rgba(30, 41, 59, 0.08);
+}
+
+.metric-card .value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.metric-card .label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-yes {
+  background: rgba(21, 128, 61, 0.12);
+  color: var(--color-success);
+  border: 1px solid rgba(21, 128, 61, 0.3);
+}
+
+.badge-no {
+  background: rgba(71, 85, 105, 0.08);
+  color: var(--color-text-muted);
+  border: 1px solid rgba(71, 85, 105, 0.2);
+}
+
+.subset-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.subset-card h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table.data-table {
+  width: 100%;
+  /* separate (not collapse) + spacing:0, and no overflow:hidden here: a
+     `collapse` table and any ancestor with non-visible overflow become the
+     "nearest scroll container" for `position: sticky` on `th` below, which
+     breaks the sticky header. `.table-scroll`'s own overflow/radius takes
+     over the rounded-corner clipping instead. */
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--color-surface);
+}
+
+table.data-table th,
+table.data-table td {
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+/* Set per column via the table helpers' `align` option. Tabular figures come
+   with it: the default proportional digits in Inter render "1" narrower than
+   "8", so decimal points would still drift out of line even once the cells
+   are right-aligned. */
+table.data-table th.cell-right,
+table.data-table td.cell-right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+table.data-table th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  background: var(--color-surface);
+  position: sticky;
+  top: 0;
+  /* The shared border-bottom above is a translucent token, which lets a
+     sliver of the row scrolling up from underneath bleed through at the
+     seam. This opaque shadow, drawn in the exact same surface color,
+     fully masks that seam regardless of the border's own alpha. */
+  box-shadow: 0 1px 0 0 var(--color-surface);
+}
+
+table.data-table tbody tr:hover {
+  background: rgba(30, 41, 59, 0.035);
+}
+
+.sort-th-btn {
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sort-th-btn:hover {
+  color: var(--color-text);
+}
+
+.table-scroll {
+  max-height: 500px;
+  overflow: auto;
+  scrollbar-gutter: stable;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.pager-status {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.pager-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+
+.pager-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.pager-btn:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pager-page-input {
+  width: 3.5rem;
+  text-align: center;
+  padding: 0.4rem 0.5rem;
+}
+
+.pager-page-input::-webkit-inner-spin-button,
+.pager-page-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.checkbox-row {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.25rem var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.checkbox-label input[type="checkbox"] {
+  accent-color: var(--color-primary);
+  width: 0.9rem;
+  height: 0.9rem;
+  cursor: pointer;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-row input[type="text"] {
+  flex: 1;
+}
+
+.search-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Total Count is constant across every row for a given sample (it doesn't
+   vary by population), so it reads as reference/context data rather than
+   the row's own measurement, so it is styled distinctly (muted and italic) to signal
+   that at a glance, not just on close inspection. */
+.muted-cell {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+input[type="text"],
+input[type="number"] {
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: 2px solid rgba(15, 118, 110, 0.4);
+  outline-offset: 1px;
+}
+
+input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.filter-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.remove-filter-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+.remove-filter-btn:hover {
+  color: var(--color-text);
+}
+
+.range-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+}
+
+.range-row input[type="number"] {
+  width: 100%;
+  min-width: 0;
+}
+
+.range-row span {
+  color: var(--color-text-muted);
+}
+
+.add-filter-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.add-filter-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.add-filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.add-filter-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  min-width: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px -4px rgba(30, 41, 59, 0.18);
+  padding: 0.4rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.add-filter-menu[hidden] {
+  display: none;
+}
+
+.add-filter-option {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+}
+
+.add-filter-option:hover {
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.add-filter-empty {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  padding: 0.45rem 0.6rem;
+}
+
+.add-filter-group-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.6rem 0.2rem;
+}
+
+.add-filter-group-label:first-child {
+  padding-top: 0.2rem;
+}
+
+.filter-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.clear-filters-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0.25rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.clear-filters-btn:hover {
+  color: var(--color-text);
+}
+
+.filter-status {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.empty-state {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.empty-state p {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+}
+
+.empty-state-clear-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.empty-state-clear-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+.retry-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.retry-btn:hover {
+  background: var(--color-primary-hover);
+}

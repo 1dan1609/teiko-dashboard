@@ -1,0 +1,7 @@
+# Lower bounds rather than exact pins, so a fresh install resolves against
+# whatever Python the host provides.
+fastapi>=0.110
+uvicorn>=0.27
+pandas>=2.0
+scipy>=1.11
+matplotlib>=3.8

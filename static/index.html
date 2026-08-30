@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teiko Clinical Trial Immune Cell Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="teiko-header">
+      <h1>Teiko</h1>
+      <div class="subtitle">Clinical Trial Immune Cell Analysis</div>
+      <svg class="teiko-header-pulse" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 30 H180 L200 30 L215 8 L230 52 L245 18 L258 30 H600" stroke="var(--color-primary)" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="overview">Data Overview</button>
+      <button class="tab-btn" data-tab="responder">Responder Analysis</button>
+      <button class="tab-btn" data-tab="baseline">Baseline Subset</button>
+      <button class="tab-btn" data-tab="rawdata">Raw Data</button>
+    </div>
+
+    <section id="panel-overview" class="tab-panel active"></section>
+    <section id="panel-responder" class="tab-panel"></section>
+    <section id="panel-baseline" class="tab-panel"></section>
+    <section id="panel-rawdata" class="tab-panel"></section>
+  </div>
+
+  <script type="module" src="/js/tabs.js"></script>
+</body>
+</html>

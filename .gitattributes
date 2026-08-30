@@ -1,0 +1,10 @@
+# Normalize to LF in the repository. The Makefile matters most: a CR left in
+# a recipe line makes GNU make fail on Linux.
+* text=auto eol=lf
+
+Makefile text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+
+*.png binary
+*.db binary
