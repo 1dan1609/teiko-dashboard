@@ -74,6 +74,8 @@ projects (project_id PK, project_name UNIQUE)
 
 **Add ingest time provenance.** With many projects arriving over time, `subjects` and `samples` want `loaded_at` and source file columns to make re-ingest idempotent and to trace a number back to the file it came from.
 
+**New analytics are new queries, not new pipelines.** Because the data is normalized rather than flattened, a different cohort definition, a new demographic breakdown, or a different statistical test is a SQL query against the existing tables, not a new preprocessing pass over the CSV. The Raw Data tab's filter system is a small version of this already: any combination of project, condition, treatment, timepoint, sex or response is answerable without touching the schema. As analytics variety grows, the effort shifts from the schema itself to a general query and filter layer on top of it.
+
 ## Code structure
 
 ```
